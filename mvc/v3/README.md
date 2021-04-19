@@ -27,7 +27,7 @@ ex) `/WEB-INF/views/new-form.jsp` -> `new-form`
     import java.util.Map;
 
     public class ModelView {
-        private String viewName;
+        private String viewName; // view에 논리적인 이름을 담는다.
         private Map<String, Object> model = new HashMap<>();
 
         public ModelView(String viewName) {
@@ -59,7 +59,7 @@ HttpServletRequest가 제공하는 파라미터는 프론트 컨트롤러가 par
 
 ```java
     public interface ControllerV3 {
-
+        // servlet에 종속적이지 않다.
         ModelView process(Map<String,String> paramMap);
     }
 ```
@@ -88,7 +88,6 @@ HttpServletRequest가 제공하는 파라미터는 프론트 컨트롤러가 par
         }
 
         private void modelToRequestAttribute(Map<String, Object> model, HttpServletRequest request) {
-
             model.forEach((key, value) -> request.setAttribute(key,value));
         }
     }
@@ -100,31 +99,31 @@ HttpServletRequest가 제공하는 파라미터는 프론트 컨트롤러가 par
 
 ```java
     public class MemberFormControllerV3 implements ControllerV3 {
-
+        
         private MemberRepository memberRepository = MemberRepository.getInstance();
 
         @Override
         public ModelView process(Map<String, String> paramMap) {
+            // view 전체 path(경로)에 이름을 넣는 것이 아닌 논리 이름만 넣는다.
             return new ModelView("new-form");
         }
     }
 ```
 
 ```java
-    public class MemberSaveControllerV3 implements ControllerV3 {
+    public class MemberListControllerV3 implements ControllerV3 {
 
         private MemberRepository memberRepository = MemberRepository.getInstance();
 
         @Override
         public ModelView process(Map<String, String> paramMap) {
-            String username = paramMap.get("username");
-            int age = Integer.parseInt(paramMap.get("age"));
+            // 회원 목록을 가져와서 members에 담는다.
+            List<Member> members = memberRepository.findAll();
+            // "회원목록" 뷰페이지 경로를 지정한다.
+            ModelView mv = new ModelView("members");
+            // 모델에 뷰에서 필요한 members 객체를 담고 반환한다.
+            mv.getModel().put("members",members);
 
-            Member member = new Member(username, age);
-            Member save = memberRepository.save(member);
-
-            ModelView mv = new ModelView("save-result");
-            mv.getModel().put("member",member);
             return mv;
         }
     }
@@ -142,13 +141,16 @@ HttpServletRequest가 제공하는 파라미터는 프론트 컨트롤러가 par
             // 파라미터 정보는 map에 담겨있다. map에서 필요한 요청 파라미터를 조회하면 된다.
             String username = paramMap.get("username");
             int age = Integer.parseInt(paramMap.get("age"));
-
+            // member 객체에 회원이름, 나이를 생성자를 통해 초기화한다.
             Member member = new Member(username, age);
+            // member객체를 저장한다.
+            // save참조변수에 주소를 저장한다.
             Member save = memberRepository.save(member);
-
+            // 뷰페이지 경로를 지정한다.
             ModelView mv = new ModelView("save-result");
             // 모델은 단순한 map이므로 모델에 뷰에서 필요한 member 객체를 담고 반환한다.
             mv.getModel().put("member",member);
+            
             return mv;
         }
     }
@@ -170,7 +172,7 @@ HttpServletRequest가 제공하는 파라미터는 프론트 컨트롤러가 par
         @Override
         protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             System.out.println("FrontControllerServletV3.service");
-            
+
             String requestURI = request.getRequestURI();
             System.out.println("요청 된 uri : "+requestURI);
 
@@ -181,10 +183,14 @@ HttpServletRequest가 제공하는 파라미터는 프론트 컨트롤러가 par
                 return;
             }
 
-            // paramMap
+            // paramMap에는 쿼리스트링 즉, 클라이언트가 입력한 input값들이  paramMap에 key,value로 담긴다.
+            // ex) paramMap = {age=19, username=jang}
             Map<String, String> paramMap = createParamMap(request);
 
+            // 부모-자식 IS-A관계이다.
+            // ModelView에 Override된 자식클랙스 process함수가 실행된다.
             ModelView mv = controller.process(paramMap);
+
             String viewName = mv.getViewName();// 논리이름
 
             // 1.논리이름(예를들어 new-form)가 viewResolver메소드로 넘어간다.
