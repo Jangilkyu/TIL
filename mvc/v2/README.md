@@ -173,10 +173,9 @@ RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath); dispatche
 │     └─📁frontcontroller
 │       ├─📄Myview.java
 │       └─📁v2
-│          ├─📄ControllerV1.java
+│          ├─📄ControllerV2.java
 │          └─📄FrontControllerServletV2.java
 │          ├─📁controller
-│          ├─📄ControllerV2.java
 │          ├─📄MemberSaveControllerV2.java
 │          ├─📄MemberListControllerV2.java
 ├── 📁WEB-INF
