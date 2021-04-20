@@ -171,8 +171,10 @@ HttpServletRequest가 제공하는 파라미터는 프론트 컨트롤러가 par
 
         @Override
         protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            // 로거로 찍는게 좋지만 sout으로 검증해본다.
+            // http://localhost:8080/front-controller/v3/* 로 요청 시 잘 호출이 잘 되는지 확인을 해봐야한다.
             System.out.println("FrontControllerServletV3.service");
-
+            // 클라이언트가 요청한 uri주소를 담는다.
             String requestURI = request.getRequestURI();
             System.out.println("요청 된 uri : "+requestURI);
 
@@ -234,5 +236,8 @@ HttpServletRequest가 제공하는 파라미터는 프론트 컨트롤러가 par
 │          ├─📄MemberListControllerV3.java
 ├── 📁WEB-INF
 │   └─📁views
-      └─📄ControllerV3
+│     ├─📄members.jsp
+│     ├─📄new-form.jsp
+│     └─📄save-result.jsp
+
 ```

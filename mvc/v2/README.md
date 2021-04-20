@@ -136,7 +136,7 @@ RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath); dispatche
             // http://localhost:8080/front-controller/v2/* 로 요청 시 잘 호출이 잘 되는지 확인을 해봐야한다.
             System.out.println("FrontControllerServletV2.service");
 
-            // controllerV1Map에 있는 key값이 requestURI에 저장된다.
+            // 클라이언트가 요청한 uri주소를 담는다.
             String requestURI = request.getRequestURI();
 
             // controllerV1Map에 인스턴스 주소가 controller애 저장된다. 
@@ -180,5 +180,7 @@ RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath); dispatche
 │          ├─📄MemberListControllerV2.java
 ├── 📁WEB-INF
 │   └─📁views
-      └─📄ControllerV1
+│     ├─📄members.jsp
+│     ├─📄new-form.jsp
+│     └─📄save-result.jsp
 ```
