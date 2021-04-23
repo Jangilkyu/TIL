@@ -159,9 +159,9 @@ public class MemberListControllerV4 implements ControllerV4 {
 │          ├─📄ControllerV4.java
 │          └─📄FrontControllerServletV3.java
 │          ├─📁controller
-│          ├─📄ControllerV3.java
-│          ├─📄MemberSaveControllerV3.java
-│          ├─📄MemberListControllerV3.java
+│          ├─📄ControllerV4.java
+│          ├─📄MemberSaveControllerV4.java
+│          ├─📄MemberListControllerV4.java
 ├── 📁WEB-INF
 │   └─📁views
 │     ├─📄members.jsp
