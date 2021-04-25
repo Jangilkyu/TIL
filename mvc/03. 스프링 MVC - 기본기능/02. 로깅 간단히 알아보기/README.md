@@ -59,7 +59,7 @@
 ```
 ## 로그 레벨 설정
 
-application.properties
+📄application.properties
 
 ```java
 #전체 로그 레벨 설정(기본 info) 
