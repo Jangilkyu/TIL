@@ -90,7 +90,7 @@ log.info("mappingPath userId={}", data);
   }
 ```
 
-## PathVariable(경로 변수)애 사용
+## PathVariable(경로 변수)에 사용
 
 1. http://localhost:8080/mapping/userA
 
