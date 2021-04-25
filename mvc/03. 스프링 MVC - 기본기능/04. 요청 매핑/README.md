@@ -27,3 +27,93 @@
         return "ok";
     }
 ```
+
+## HTTP 메서드 매핑 축약
+
+```java
+    /**
+    * 편리한 축약 애노테이션 (코드보기) * @GetMapping
+    * @PostMapping
+    * @PutMapping
+    * @DeleteMapping
+    * @PatchMapping
+    */
+    @GetMapping(value = "/mapping-get-v2") public String mappingGetV2() {
+        log.info("mapping-get-v2");
+        return "ok";
+    }
+```
+
+HTTP 메서드를 축약한 애노테이션을 사용하는 것이 더 직관적이다. 코드를 보면 내부에서 
+`@RequestMapping` 과 `method` 를 지정해서 사용하는 것을 확인할 수 있다.
+
+## HTTP 메서드 매핑 축약 - @GetMapping
+
+```java
+    /**
+    * 편리한 축약 애노테이션 (코드보기) * @GetMapping
+    * @PostMapping
+    * @PutMapping
+    * @DeleteMapping
+    * @PatchMapping
+    */
+    // 실제로 @GetMapping 안에 들어가면 
+    @GetMapping(value = "/mapping-get-v2") public String mappingGetV2() {
+    log.info("mapping-get-v2");
+        return "ok";
+    }
+```
+
+실제로 `@GetMapping`애노테이션 내부를 살펴보면 아래 그림과 같이 `@RequestMapping(method = RequestMethod.GET)`이 있는 것을 확인 할 수 있다.
+
+![image](https://user-images.githubusercontent.com/69107255/115999793-2b486700-a628-11eb-9cc7-9fe1ef342640.png)
+
+
+## PathVariable(경로 변수) 사용
+
+최근 HTTP API는 다음과 같이 리소스 경로에 식별자를 넣는 스타일을 선호한다.
+
+ex)<br>
+/mapping/userA<br>
+/users/1<br>
+
+```java
+/*
+* PathVariable 사용
+* 변수명이 같으면 생략 가능
+* @PathVariable("userId") String userId -> @PathVariable userId
+*/ 
+@GetMapping("/mapping/{userId}")
+  public String mappingPath(@PathVariable("userId") String data) {
+log.info("mappingPath userId={}", data);
+      return "ok";
+  }
+```
+
+## PathVariable(경로 변수)애 사용
+
+1. http://localhost:8080/mapping/userA
+
+2. `@RequestMapping` 은 URL 경로를 템플릿화 할 수 있는데, `@PathVariable` 을 사용하면 매칭 되는 부분을 편리하게 조회할 수 있다.
+3. `@PathVariable` 의 이름과 파라미터 이름이 같으면 생략할 수 있다.
+
+
+## PathVariable 사용 - 다중
+
+`userId`를 userA로 주문번호인 `orderId`를 100으로 받아서 log를 통하여 찍어봤다.
+
+```java
+    /**
+     * PathVariable 사용 다중
+     */
+    @GetMapping("/mapping/users/{userId}/orders/{orderId}")
+    public String mappingPath(@PathVariable String userId, @PathVariable Long
+            orderId) {
+        log.info("mappingPath userId={}, orderId={}", userId, orderId);
+        return "ok";
+    }
+```
+
+### 결과
+
+![image](https://user-images.githubusercontent.com/69107255/116001961-3e603480-a632-11eb-96bd-742688922c97.png)

@@ -107,4 +107,3 @@ logging.level.hello.springmvc=debug
     - 운영 서버는 info 출력
 - `private final Logger log = LoggerFactory.getLogger(getClass());`
     - `@Slf4j` 로 변경이 가능하다.
-
