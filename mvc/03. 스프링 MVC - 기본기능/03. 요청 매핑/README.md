@@ -8,7 +8,7 @@
 `/hello-basic` URL 호출이 오면 이 메서드가 실행되도록 매핑한다.
 대부분의 속성을 `배열[]` 로 제공하므로 다중 설정이 가능하다. `{"/hello-basic", "/hello-go"}`
 
-## HTTP 메서드 매핑
+## 1. HTTP 메서드 매핑
 
 - HTTP 메서드
     - `@RequestMapping` 에 `method` 속성으로 HTTP 메서드를 지정하지 않으면 HTTP 메서드와 무관하게 호출된다.
@@ -28,11 +28,12 @@
     }
 ```
 
-## HTTP 메서드 매핑 축약
+## 2. HTTP 메서드 매핑 축약
 
 ```java
     /**
-    * 편리한 축약 애노테이션 (코드보기) * @GetMapping
+    * 편리한 축약 애노테이션 (코드보기) 
+    * @GetMapping
     * @PostMapping
     * @PutMapping
     * @DeleteMapping
@@ -47,7 +48,7 @@
 HTTP 메서드를 축약한 애노테이션을 사용하는 것이 더 직관적이다. 코드를 보면 내부에서 
 `@RequestMapping` 과 `method` 를 지정해서 사용하는 것을 확인할 수 있다.
 
-## HTTP 메서드 매핑 축약 - @GetMapping
+## 3. HTTP 메서드 매핑 축약 - @GetMapping
 
 ```java
     /**
@@ -69,7 +70,7 @@ HTTP 메서드를 축약한 애노테이션을 사용하는 것이 더 직관적
 ![image](https://user-images.githubusercontent.com/69107255/115999793-2b486700-a628-11eb-9cc7-9fe1ef342640.png)
 
 
-## PathVariable(경로 변수) 사용
+## 4. PathVariable(경로 변수) 사용
 
 최근 HTTP API는 다음과 같이 리소스 경로에 식별자를 넣는 스타일을 선호한다.
 
@@ -90,7 +91,7 @@ log.info("mappingPath userId={}", data);
   }
 ```
 
-## PathVariable(경로 변수)에 사용
+## 5. PathVariable(경로 변수)에 사용
 
 1. http://localhost:8080/mapping/userA
 
@@ -98,7 +99,7 @@ log.info("mappingPath userId={}", data);
 3. `@PathVariable` 의 이름과 파라미터 이름이 같으면 생략할 수 있다.
 
 
-## PathVariable 사용 - 다중
+## 6. PathVariable 사용 - 다중
 
 `userId`를 userA로 주문번호인 `orderId`를 100으로 받아서 log를 통하여 찍어봤다.
 
