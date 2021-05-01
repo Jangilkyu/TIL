@@ -28,6 +28,8 @@
 
 ![image](https://user-images.githubusercontent.com/69107255/116778241-adfb7700-aaab-11eb-9938-1948aa4f3e11.png)
 
+literal과 new연산자 비교
+ 
 ```java
     String str = "ABCD"; 
     String str1 = new String("ABCD");
@@ -35,10 +37,14 @@
     System.out.print(str == str1); // false
 ```
 
-### false인 이유는?
+### 👉**false인 이유는?**
 
 분명 `str`과 `str1` 변수는 **"ABCD"** 라는 동일한 값을 가지고 있다.<br>
 하지만 `literal`타입과 `new연산자`의 선언 시 객체가 저장되는 위치가 다르기 때문이다.
+
+---
+
+literal끼리 비교
 
 ```java
     String str = "ABCD";
@@ -47,7 +53,7 @@
     System.out.print(str == str1); // true
 ```
 
-### true인 이유는?
+### 👉 **true인 이유는?**
 
 str이 생성될 때 string pool(문자열 저장소)에 "ABCD"라는 값을 가지는 String객체가 생성된다.
 이후에 str1을 생성하게 되면 String클래스는 불변 객체이기 때문에 미리 `intern()` 메소드에서 탐색이 된 후 미리 생성된 객체가 공유되어 단순 비교인 ==으로 true값이 나온다.
@@ -101,7 +107,7 @@ compile 시 "Hello"라는 문자를 사용한다는 것을 알 수 있기 때문
 2083562754
 1239731077
 ```
-### 왜 다른 hashcode가 출력될까?
+### 👉 **왜 다른 hashcode가 출력될까?**
 
 str1, str2, str3는 전부 new String(String)을 이용해 생성했지만 str1, str2, str3 전부 다른 hashcode가 나왔다. 이 뜻은 서로 다른 객체라는 것이다.
 
@@ -142,7 +148,7 @@ str, str1, str2 모두 동일한 hascode값을 가지게 되었다.
 `intern()`메소드를 활용해 String Pool에서 조회한 후 동일한 객체가 단 한개만 생성 된 것을 확인 할 수있다.
 
 
-### 그렇다면 intern()을 사용해도 될까?
+### 👉 **그렇다면 intern()을 사용해도 될까?**
 
 intern()에 단점이 있다. [java api](https://docs.oracle.com/javase/8/docs/api/)에 Java.lang.String에 intern()메소드를 확인해보자.
 
@@ -157,11 +163,13 @@ intern()에 단점이 있다. [java api](https://docs.oracle.com/javase/8/docs/a
 
 따라서 `intern()`메소드는 생성되는 객체가 아닌 String pool에 있는 객체를 가리키게 된다. 때문에 Heap메모리를 아낄 수 있는 장점이 있다.
 
-### `intern()`메소드에 단점은?
+### 👉 **`intern()`메소드에 단점은?**
 
 1. String 객체를 만들어야한다.
 2. String의 equals()메소드를 이용해 String Pool에 있는 문자열과 비교하는 작업을 거쳐야하기 때문에 시간이 걸린다.
 3. intern()메소드는 native메소드이기 때문에 네이티브에서 메모리 관리를 한다. 따라서 자바 내에서 문자열에 대한 메모리 관리가 불가능하게 된다.
+
+---
 
 각 선언 방법에 따라 걸리는 시간을 알아보자.
 ```java
@@ -185,7 +193,6 @@ intern()에 단점이 있다. [java api](https://docs.oracle.com/javase/8/docs/a
     }
     long endTime2 = System.currentTimeMillis();
     System.err.println("new String intern = "  + ( endTime2 - startTime2));
-}
 
 // 결과
 String pool = 12
@@ -203,7 +210,7 @@ intern()메소드를 사용할 때는 1~2번 사용되는 String객체를 상수
 2. 암호화 또는 hash처럼 문자를 세부적으로 다루지 않는 한 new String으로 클래스 초기화를 할 필요없다.
 3. 동적으로 생성된 문자열은 대부분 String Pool(문자열 저장소)에 담지 않은 String 클래스이기 때문에, 값 비교엔 `equals()` 메소드를 이용해서 비교하는 것이 좋다. 내부적으로 String.equals 메소드가 값을 비교하도록 정의되어 있기에, 문자열 비교에 효율적일 수밖에 없을 것이다.
 
-## equals
+### **equals() 메소드**
 
 문자열은 생성방법과 상관없이 동일한 비교를 하기 위해서 `.equals()` 메소드를 사용한다.
 
