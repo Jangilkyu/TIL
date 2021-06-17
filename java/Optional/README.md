@@ -35,7 +35,3 @@
 
 ## Optional에 들어있는 값 걸러내기 
 - Optional filter(Predicate)
-
-## Optional에 들어있는 값 변환하기
-- Optional map(Function)
-- Optional flatMap(Function): Optional 안에 들어있는 인스턴스가 Optional인 경우에 사용하면 편리하다.
