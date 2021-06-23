@@ -1,4 +1,6 @@
-ArrayBlockingQueue는 Array로 구현된 BlockingQueue이다.
+## ArrayBlockingQueue
+
+> ArrayBlockingQueue는 Array로 구현된 BlockingQueue이다.
 
 - Queue의 크기가 정해져 있기 때문에 무한히 아이템을 추가할 수 없다.
 - 추가되는 아이템은 순서가 있다.
@@ -17,7 +19,7 @@ ArrayBlockingQueue는 Array로 구현된 BlockingQueue이다.
 ```
 
 
-## **add() : 아이템 추가**
+## **add() 아이템 추가**
 
 `add()`메소드로 아이템을 `Queue`에 추가할 수 있다. FIFO 순서로 Queue에 저장된다.
 
