@@ -59,6 +59,8 @@
 
 Swift에는 7가지에 기본 데이터 타입이 있다.
 
+Swift에서는 다른 데이터 타입과 자료교환은 암시적으로 절대 불가능하다.
+
 ## Bool
 
 c언어에서 처럼 논리 연산자에 0 과 1을 Bool타입에 대입 할 시 `error: cannot assign value of type 'Int to type 'Bool'`이라는 에러가 발생한다. 
@@ -148,7 +150,56 @@ Character 타입은 한 문자를 표현하기 위한 타입니다.
 
 ## String 
 
+String은 문자열을 담는 타입이다.
+
++ 연산자를 통하여 문자열을 더해 줄 수 있다.
+
+Character타입에 변수를 String에 담을 시 타입이 일치하지 않기 때문에 에러가 발생한다.
 
 ```swift
+    var someString: String = "러블리즈  "
+    someString = someString + " 류수정 👍🏻"
+
+    // String문자열 타입에  Character(문자) 타입을 대입할 시 타입이 맞지 않다.
+    someString = someCharacter // (X)
+```
+
+
+# Any, AnyObject, nil
+
+기본 데이터 타입은 아니지만, 기본 데이터 타입 위치에서 특별한 역할을 수행하는 키워드들을 알아보자.
+
+##  Any
+
+Swift의 모든 타입을 지칭하는 키워드이다.
+
+더블 타입에 값을 담고 있는 Any타입에 someAny 변수에 값을 Double 타입인 someDouble 변수에 대입 시 `error: cannot convert value of type 'Any' to specified type 'Double'`
+
+```swift
+    var someAny: Any = 100
+    someAny = "어떤 타입이든 수용이 가능하다."
+    someAny = 123.12
+
+    // let someDouble: Double = somAny
+```
+
+
+## AnyObject
+    - 모든 클래스 타입을 지칭하는 프로토콜
+
+    인스턴스타입이 아닌 다른 타입을 대입할 경우 `error: value of type 'Double' does not conform to 'AnyObject' in assignment`
+
+```swift
+    class SomeClass {}
+
+    // SomeClass()인스턴스를 생성 후 someAnyObject 변수에 담았다.
+    var someAnyObject: AnyObject = SomeClass() 
+
+    // someAnyObject변수에 인스턴스가 아닌 Double형을 넣을 경우 
+    someAnyObject = 123.12
+```
+
+- nil
+    - 없음을 의미하는 키워드
 
 ```
