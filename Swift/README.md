@@ -148,7 +148,7 @@ Character 타입은 한 문자를 표현하기 위한 타입니다.
     someCharacter = "가나다라"
 ```
 
-## String 
+## **String** 
 
 String은 문자열을 담는 타입이다.
 
@@ -184,10 +184,11 @@ Swift의 모든 타입을 지칭하는 키워드이다.
 ```
 
 
-## AnyObject
-    - 모든 클래스 타입을 지칭하는 프로토콜
+## **AnyObject**
 
-    인스턴스타입이 아닌 다른 타입을 대입할 경우 `error: value of type 'Double' does not conform to 'AnyObject' in assignment`
+- 모든 클래스 타입을 지칭하는 프로토콜
+
+인스턴스타입이 아닌 다른 타입을 대입할 경우 `error: value of type 'Double' does not conform to 'AnyObject' in assignment`
 
 ```swift
     class SomeClass {}
@@ -200,6 +201,72 @@ Swift의 모든 타입을 지칭하는 키워드이다.
 ```
 
 - nil
+
     - 없음을 의미하는 키워드
+
+
+## **컬렉션 타입**
+
+```swift
+    // 빈 Int Array 생성
+    var integers: Array<Int> = Array<Int>()
+    // 
+    integers.append(1)
+    integers.append(100)
+    //integers.append(101.1) // integer에는 실수를 넣을 수 없음(X)
+
+    integers.contains(100) // 100이라는 값이 포함이 되어있는지?
+    integers.contains(99) // 
+
+    // 0번 인덱스에 있는 값을 없애 달라
+    integers.remove(at: 0)
+    // 마지막 요소를 없애는 것
+    integers.removeLast()
+    // 모두 없애기 
+    integers.removeAll()
+    // intgers에 몇개가 들어있는지 확인
+    integers.count
+```
+
+**Array를 표현할 수 있는 다양한 방법들**
+
+```swift
+    //Array<Double>와 [Double]은 동일한 표현이다.
+    // 빈 Double Array 생성
+    var double: Array<Double> = [Double]()
+
+    // 빈 String Array 생성
+    var strings: [String] = [String]()
+
+    // 빈 Character Array 생성
+    // []는 새로운 빈 Array
+    var characters: [Character] = []
+
+    // let을 사용하여 Array를 선언하면 불변 Array
+    let immutableArray = [1,2,3]
+    // let은 변경이 불가능하기 때문에 append 및 remove를 할 수 없다.
+```
+
+
+### Dictionary
+
+```swift
+    // Key가 String 타입이고 Value가 Any인 빈 Dictionary 생성
+    var anyDictionary: Dictionary<String, Any> = [String: Any]()
+    anyDictionary["someKey"] = "value"
+    anyDictionary["anotherKey"] = 100
+
+    anyDictionary // ["someKey": "value", "anotherKey": 100]
+    // key에 대한 값을 변경 할 수 있다.
+    anyDictionary["someKey"] = "dictionary"
+    anyDictionary // ["someKey": "dictionary", "anotherKey": 100]
+
+    // key에 대한 값을 없애고 싶을 때
+    anyDictionary.removeValue(forKey: "anotherKey")
+
+    // key에 대한 값을 없애고 싶을 때
+    anyDictionary["someKey"] = nil
+
+    
 
 ```
