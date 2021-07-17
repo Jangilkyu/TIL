@@ -205,7 +205,7 @@ Swift의 모든 타입을 지칭하는 키워드이다.
     - 없음을 의미하는 키워드
 
 
-## **컬렉션 타입**
+# **컬렉션 타입**
 
 ```swift
     // 빈 Int Array 생성
@@ -267,6 +267,97 @@ Swift의 모든 타입을 지칭하는 키워드이다.
     // key에 대한 값을 없애고 싶을 때
     anyDictionary["someKey"] = nil
 
-    
 
+    let emptyDictionary: [String: String] = [ : ]
+    let initalizedDictionary: [String: String] = ["name": "jangilkyu", "gender" : "mail"]
+```
+
+
+# 함수 기본
+
+## 함수 선언
+
+```swift
+   func 함수이름(매개변수1이름: 매개변수1타입, 매개변수2이름: 매개변수2타입) -> 반환 타입{
+       함수 구현 부
+
+        return 반환 값
+   }
+```
+
+## 반환되는 값이 없는 함수
+
+```swift
+   func printMyName(name: String) -> Void {
+       print(name)
+   }
+
+   printMyName(String: "장일규")
+```
+
+## 반환되는 값이 있는 함수
+
+```swift
+    func sum(a: Int,b: Int) -> Int {
+        return a + b
+    }
+
+    sum(a: 3, b: 2)
+```
+
+## 매개변수와 반환값이 전부 없는 경우
+
+```swift
+    func hello() -> Void {
+        print("hello")
+    }
+
+    hello()
+```
+
+
+# 함수 고급
+
+- **매개변수 기본 값**
+
+ 기본값을  갖는 매개변수는 매개변수 목록 중에 뒤쪽에 위치하는 것이 좋다.
+
+```swift
+    func greeting(friend: String, me: String = "jangilkyu") {
+        print("Hello \(friend)! I'm \(me)")
+    }
+
+    // 매개변수 기본값을 가지는 매개변수는 생략이 가능
+    greeting(friend: "sujung") // Hello sujung! I'm jangilkyu
+```
+
+- 전달인자 레이블
+
+**전달인자 레이블**은 함수를 호출할 때에 매개변수의 역할을 더 명확하게 하거나 함수 사용자의 입장에서 표현하고자 할때 사용
+
+```swift
+    func greeting(to friend: String, from me: String){
+        print("Hello \(friend)! I'm \(me)")
+    }
+
+    // 함수 호출 시 전달인자 레이블 사용해야함
+    greeting(to: "sujung",from: "ilkyu")
+```
+
+
+**가변 매개변수**
+
+매개변수로 전달될 값들에 갯수가 명확치 않을 시 가변 매개변수를 사용할 수 있다.
+
+매개변수 뒤에 `...` 마침표 3개를 찍으면된다.
+
+함수당 하나만 가질 수 있다.
+
+```swift
+    func sayHelloToFriends(me: String, friends: String...) -> String {
+        return "Hello \(friends)! I'm \(me)!"
+    }
+
+    print(sayHelloToFriends(me: "jangilkyu", friends: "sujung", "mina", "chulsu")) //Hello ["sujung", "mina", "chulsu"]! I'm jangilkyu!
+    print(sayHelloToFriends(me: "ilkyu")) //Hello []! I'm ilkyu!
 ```
