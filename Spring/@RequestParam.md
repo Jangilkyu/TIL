@@ -27,13 +27,24 @@ public class RequestParamController {
 
 클라이언트가 /?username=jangilkyu로 요청 시, 핸들러 매개변수 인 memberName에 'jangilkyu'가 매핑된다. 
 
-![image](https://user-images.githubusercontent.com/69107255/128355501-67472196-2fb1-4b38-a076-851f13831c9d.png)
+![image](https://user-images.githubusercontent.com/69107255/128535733-7dab50a9-45e9-42ec-a0ca-4becc86e1b94.png)
 
+
+## **@RequestParam 특징**
+
+- `@RequestParam`으로 파라미터 이름으로 바인딩 할 수 있다.
+- @RequestParam( value ) -> value의 속성이 파라미터 이름으로 사용된다.
+    - 예시) `@RequestParam("username") String memberName` -> `reqeust.getParameter("username")`으로 쓰는것과 같다.
+- `@RequestParam`의 파라미터 이름과 변수명이 같으면 `@RequestParam String username`으로 (value)를 생략할 수 있다.
+- String, int, Integer 등 단순 타입 시 파라미터 이름과 변수명이 일치하면 `@RequestParam`도 생략할 수 있다. 
 
 ## **@RequestParam 기본 속성**
 
 ```java
-@RequestParam(value="memberName", defaultValue="defaultUser", required= false) String memberName)
+public String ParamDef(
+@RequestParam(value="memberName", defaultValue="defaultUser", required= false) String memberName) ) {
+    
+}
 ```
 
 - value는 key대한 값을 바인딩한다.
