@@ -50,3 +50,8 @@ public String ParamDef(
 - value는 key대한 값을 바인딩한다.
 - required는 기본이 true이고,값이 반드시 있어야 한다. 없을 시 400에러가 발생한다.
 - defaultValue는 파라미터에 매핑될 값이 없을 경우 기본 값으로 세팅해준다.
+
+
+@RequestParam과 @PathVariable은 모두 요청 URI에서 사용할 수 있지만 차이가 있다.
+
+@RequestParam은 쿼리문자열에서 값을 추출하고, @PathVariable은 URI경로에서 값을 추출한다.
