@@ -239,7 +239,7 @@ Swift의 모든 타입을 지칭하는 키워드이다.
     var strings: [String] = [String]()
 
     // 빈 Character Array 생성
-    // []는 새로운 빈 Array
+    // []는 새로운 빈 Array(축약형)
     var characters: [Character] = []
 
     // let을 사용하여 Array를 선언하면 불변 Array
@@ -249,6 +249,8 @@ Swift의 모든 타입을 지칭하는 키워드이다.
 
 
 ### Dictionary
+
+요소들이 순서없이 키와 값에 쌍으로 구성되는 컬렉션 타입이다.
 
 ```swift
     // Key가 String 타입이고 Value가 Any인 빈 Dictionary 생성
@@ -269,11 +271,40 @@ Swift의 모든 타입을 지칭하는 키워드이다.
 
 
     let emptyDictionary: [String: String] = [ : ]
-    let initalizedDictionary: [String: String] = ["name": "jangilkyu", "gender" : "mail"]
+    let initalizedDictionary: [String: String] = ["name": "jangilkyu", "gender" : "male"]
+```
+
+### Set
+
+순서가 없고 멤버가 유일한 것을 보장하는 컬렉션 타입이다.
+
+```swift
+
+// Set은 축약형은 따로 없고 아래와 같이 사용하면 된다.
+var set: Set = Set<Int>()
+
+// 값 추가
+set.insert(10)
+set.insert(20)
+set.insert(30)
+set.insert(30)
+set.insert(30)
+set
+
+// 결과
+{20,10,30} // 중복값을 제외된다.
+
+// 값삭제
+set.remove(20)
+
+// 결과
+{10, 30}
 ```
 
 
 # 함수 기본
+
+함수는 작업의 가장 작은 단위이자 코드의 집합이다.
 
 ## 함수 선언
 
@@ -360,4 +391,59 @@ Swift의 모든 타입을 지칭하는 키워드이다.
 
     print(sayHelloToFriends(me: "jangilkyu", friends: "sujung", "mina", "chulsu")) //Hello ["sujung", "mina", "chulsu"]! I'm jangilkyu!
     print(sayHelloToFriends(me: "ilkyu")) //Hello []! I'm ilkyu!
+```
+
+# 조건문
+
+```swift
+/*
+    if 조건식 {
+        실행할 구문
+    }
+*/
+```
+
+# 반복문
+
+## for문
+
+### 1~4범위를 순회
+
+```swift
+    for i in 1...4 {
+        print(i)
+    }
+
+    // 결과
+    /*
+        1
+        2
+        3
+        4
+    */
+```
+
+### 배열을 순회
+
+```swift
+    let array = [1,2,3,4,5]
+
+    for i in array {
+        print(i)
+    }
+```
+
+## while문
+
+```swift
+    var number = 5
+
+    while number < 10 {
+        number+=1
+    }
+
+    number
+
+    // 결과
+    // 10
 ```

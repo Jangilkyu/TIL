@@ -3,8 +3,8 @@
 - parameterized types
 - 많은 알고리즘들이 자료형에 관계없이 같은 로직을 적용하고 있다.
     - 예를 들어, 정렬하는 데이터들이 Integer 타입일 수도 있고, String 타입일 수도 있다.
-- 어던 알고리즘에든 Object 객체 타입을 처리하고자 하는 데이터 타입으로 할 수 있찌만, 이 경우 항상 캐스트 연산자가 필요하다.
-- Generics는 반드시 reference 타입으로만 지정 할 수 있다.(primitive Data)는 안된다.
+- 어떤 알고리즘에든 Object 객체 타입을 처리하고자 하는 데이터 타입으로 할 수 있지만, 이 경우 항상 캐스트 연산자가 필요하다.
+- Generics는 반드시 reference 타입으로만 지정 할 수 있다. (primitive Data)는 안된다.
 - 서로 다른 reference 타입 간에는 '='연산자를 사용할 수없다.
 - Generics는 type safety를 개선한다.
 
