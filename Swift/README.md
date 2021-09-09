@@ -447,3 +447,82 @@ set.remove(20)
     // 결과
     // 10
 ```
+
+
+# 구조체
+
+```swift
+struct User {
+    var nickname: String
+    var age: Int
+    
+    func information() {
+        print("\(nickname) \(age)")
+    }
+}
+
+var user = User(nickname: "gunter", age:  29)
+
+user.nickname
+user.nickname = "일구"
+user.nickname
+
+user.information()
+
+```
+
+
+# 클래스
+
+```swift
+class Dog {
+    var name: String = ""
+    var age: Int = 0
+    
+    init() {
+        
+    }
+    
+    func introduce() {
+        print("name \(name) age \(age)")
+    }
+}
+
+var dog = Dog()
+
+dog.name = "구름이"
+dog.age = 2
+dog.name
+dog.age
+
+dog.introduce()
+```
+
+# init
+
+```swift
+class User {
+    var nickname: String
+    var age: Int
+    
+    init(nickname: String, age: Int) {
+        self.nickname = nickname
+        self.age = age
+    }
+    
+    init(age: Int) {
+        self.nickname = "유화"
+        self.age = age
+    }
+    
+}
+
+var user = User(nickname: "장일규", age: 29)
+
+user.nickname
+user.age
+
+var user2 = User(age: 27)
+user2.nickname
+user2.age
+```
