@@ -8,7 +8,7 @@
     }
 ```
 
-`spring-boot-starter-data-jpa` 의존성을 추가한 후 `@Entity`애노테이션을 클래스 위에 선언하면 자바 클래스와 테이블이 매핑이 된다.
+`spring-boot-starter-data-jpa` 의존성을 추가한 후 `@Entity`애노테이션을 클래스 위에 선언하면 자바 클래스와 테이블이 매핑이 되고 JPA가 관리한다.
 
 |id|name|
 |:----:|:----|
