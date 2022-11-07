@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
+  let IMAGE_URL = "https://picsum.photos/1280/720/?random"
   var counter: Int = 0
   
   let countLabel: UILabel = {
@@ -24,19 +26,17 @@ class ViewController: UIViewController {
   let onSyncButton: UIButton = {
     let btn = UIButton()
     btn.setTitle("동기", for: .normal)
-    btn.backgroundColor = .black
+    btn.setTitleColor(UIColor.blue, for: .normal)
     return btn
   }()
   
   let onAsyncButton: UIButton = {
     let btn = UIButton()
     btn.setTitle("비동기", for: .normal)
-    btn.backgroundColor = .black
+    btn.setTitleColor(UIColor.red, for: .normal)
     return btn
   }()
-  
-  let IMAGE_URL = "https://picsum.photos/1280/720/?random"
-  
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
